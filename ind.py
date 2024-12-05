@@ -8,14 +8,12 @@ BLUE_T = 14
 sum_of_game_id = 0
 
 def skip(s):
-    """Skip non-digit characters in the string."""
     i = 0
     while i < len(s) and not s[i].isdigit():
         i += 1
     return i
 
 def str_to_positive_int(s, index):
-    """Convert substring starting at index to a positive integer."""
     num = 0
     while index < len(s) and s[index].isdigit():
         num = num * 10 + int(s[index])
@@ -23,7 +21,6 @@ def str_to_positive_int(s, index):
     return num, index
 
 def str_scan(s):
-    """Process the string to validate cube counts."""
     global sum_of_game_id
     i = skip(s)
     game_id, i = str_to_positive_int(s, i)
@@ -46,7 +43,7 @@ def str_scan(s):
                 if cube_count > BLUE_T:
                     valid = False
             else:
-                print("Something's not right")
+                print("neco jsi podělal")
                 valid = False
     return game_id if valid else 0
 
@@ -60,12 +57,12 @@ def main():
                 game_id = str_scan(line.strip())
                 sum_of_game_id += game_id
     except FileNotFoundError:
-        print("File not found. Please make sure 'cube_chall.txt' exists.")
+        print("nanašel se file")
         return
 
-    elapsed_time = (time.time() - start) * 1_000_000  # Convert seconds to microseconds
+    elapsed_time = (time.time() - start) * 1_000_000  ## konverze do milisekund :O
     print(f"Sum: {sum_of_game_id}")
-    print(f"Elapsed Time: {int(elapsed_time)} microseconds")
+    print(f"Elapsed Time: {int(elapsed_time)}")
 
 if __name__ == "__main__":
     main()
